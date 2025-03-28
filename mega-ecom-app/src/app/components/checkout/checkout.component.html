@@ -1,0 +1,234 @@
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="w3-container">
+  <h2>W3.CSS Modal</h2>
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Some text. Some text. Some text.</p>
+        <p>Some text. Some text. Some text.</p>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<ngx-spinner bdColor="rgba(151,149,149,0.4)" size="large" color="orange" type="ball-clip-rotate-pulse" fullScreen="true">
+
+  <div id="tractor">
+    <div class="body">
+      <div class="exhaust"></div>
+      <div class="ventilation"></div>
+      <div class="window"></div>
+      <div class="wheel"></div>
+      <div class="wheel-inner"></div>
+      <div class="wheel-small"></div>
+      <div class="wheel-small-inner"></div>
+    </div>
+  </div>
+
+  <p style="font-size: 20px; color: black">Booking Order...</p>
+</ngx-spinner>
+
+<div class="section" *ngIf="cartData.total > 0">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+      <div class="col-md-7" style="background-color:white">
+        <!-- Billing Details -->
+        <form [formGroup]="userProfile">
+        <div class="billing-details">
+          <div class="section-title">
+            <h3 class="title">Billing address</h3>
+          </div>
+          
+            <div class="form-group">
+              <input id="firstName" formControlName="firstName" type="text" placeholder="First Name" class="form-control" name="firstName">
+            </div>
+            <div class="form-group">
+              <input id="lastName" formControlName="lastName" type="text" placeholder="Last Name" class="form-control" name="lastName">
+            </div>
+            <div class="form-group">
+              <input id="email" formControlName="email" type="text" placeholder="Email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <input id="address" formControlName="address" type="text" placeholder="Address" class="form-control" name="address">
+            </div>
+            <div class="form-group">
+              <input id="city" formControlName="city" type="text" placeholder="City" class="form-control" name="city">
+            </div>
+            <div class="form-group">
+                <input id="country" formControlName="state" type="text" placeholder="State" class="form-control" name="state">
+            </div>
+            <div class="form-group">
+              <input id="country" formControlName="country" type="text" placeholder="Country" class="form-control" name="country">
+            </div>
+            <div class="form-group">
+              <input id="zipCode" formControlName="zipCode" type="text" placeholder="Zip Code" class="form-control" name="zipCode">
+            </div>
+            <div class="form-group">
+              <input id="contact" formControlName="contact" type="text" placeholder="Telephone" class="form-control" name="contact">
+            </div>
+          
+        </div>
+        <!-- /Billing Details -->
+
+        <!-- Shiping Details -->
+        <div class="shiping-details">
+          <div class="section-title">
+            <h3 class="title">Shiping address</h3>
+          </div>
+          <div class="input-checkbox">
+            <input type="checkbox" id="shiping-address">
+            <label for="shiping-address">
+              <span></span>
+              Ship to a diffrent address?
+            </label>
+            <div class="caption">
+              <div class="form-group">
+                <input id="sfirstName" formControlName="sfirstName" type="text" placeholder="First Name" class="form-control" name="sfirstName">
+              </div>
+              <div class="form-group">
+                <input id="slastName" formControlName="slastName" type="text" placeholder="Last Name" class="form-control" name="slastName">
+              </div>
+              <div class="form-group">
+                <input id="semail" formControlName="semail" type="text" placeholder="Email" class="form-control" name="semail">
+              </div>
+              <div class="form-group">
+                <input id="saddress" formControlName="saddress" type="text" placeholder="Address" class="form-control" name="saddress">
+              </div>
+              <div class="form-group">
+                <input id="scity" formControlName="scity" type="text" placeholder="City" class="form-control" name="scity">
+              </div>
+              <div class="form-group">
+                  <input id="sstate" formControlName="sstate" type="text" placeholder="State" class="form-control" name="sstate">
+              </div>
+              <div class="form-group">
+                <input id="scountry" formControlName="scountry" type="text" placeholder="Country" class="form-control" name="scountry">
+              </div>
+              <div class="form-group">
+                <input id="szipCode" formControlName="szipCode" type="text" placeholder="Zip Code" class="form-control" name="szipCode">
+              </div>
+              <div class="form-group">
+                <input id="scontact" formControlName="scontact" type="text" placeholder="Telephone" class="form-control" name="scontact">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Shiping Details -->
+
+        <!-- Order notes -->
+        <div class="order-notes">
+          <textarea class="input" placeholder="Order Notes"></textarea>
+        </div>
+      </form>
+        <!-- /Order notes -->
+      </div>
+    
+      <!-- Order Details -->
+      <div class="col-md-5 order-details">
+        <div class="section-title text-center">
+          <h3 class="title">Order Summay</h3>
+        </div>
+        <div class="order-summary">
+          <div class="order-col">
+            <div>
+              <strong>PRODUCT</strong>
+            </div>
+            <div>
+              <strong>SubTotal</strong>
+            </div>
+          </div>
+          <div class="order-products">
+            <div class="order-col" *ngFor="let c of cartData.data;">
+              <div>{{c.numInCart}}x {{c.product.name}}</div>
+              <div>{{(c.product.price*c.numInCart) | currency:'INR'}}</div>
+            </div>
+          </div>
+          <div class="order-col">
+            <div>Shipping</div>
+            <div>
+              <strong>FREE</strong>
+            </div>
+          </div>
+          <div class="order-col dropdown-divider">
+            <div>
+              <strong>TOTAL</strong>
+            </div>
+            <div>
+              <strong class="order-total">{{cartTotal | currency:'INR'}}</strong>
+            </div>
+          </div>
+        </div>
+        <!--<div class="payment-method">
+        <div class="input-radio">
+          <input type="radio" name="payment" id="payment-1">
+          <label for="payment-1">
+            <span></span>
+            Direct Bank Transfer
+          </label>
+          <div class="caption">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="input-radio">
+          <input type="radio" name="payment" id="payment-2">
+          <label for="payment-2">
+            <span></span>
+            Cheque Payment
+          </label>
+          <div class="caption">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="input-radio">
+          <input type="radio" name="payment" id="payment-3">
+          <label for="payment-3">
+            <span></span>
+            Paypal System
+          </label>
+          <div class="caption">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>-->
+
+        <div class="payment-method">
+          <div class="input-radio">
+            <input type="radio" name="payment" id="payment-1" checked>
+            <label for="payment-1">
+              <span></span>
+              Cash and Carry
+            </label>
+            <div class="caption">
+              <p>Payment has to be done after delivery.</p>
+            </div>
+          </div>
+        </div>
+        <div class="input-checkbox">
+          <input type="checkbox" id="terms">
+          <label for="terms">
+            <span></span>
+            I've read and accept the
+            <a href="#">terms & conditions</a>
+          </label>
+        </div>
+        <button type="submit" class="btn-outline-danger btn-sm my-2 btn-block" [disabled]="cartTotal <= 0 " (click)="onCheckout()">Place order</button>
+      </div>
+      <!-- /Order Details -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<div class="text-center my-5" *ngIf="cartData.total <= 0">
+  <h4>Your Cart Is Empty</h4>
+  <button class="btn btn-primary btn-lg mt-3" routerLink="/">GO TO SHOP</button>
+</div>
