@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://rxnw47yx57.execute-api.us-east-1.amazonaws.com/v2/login-service",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
